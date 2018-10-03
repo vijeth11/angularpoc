@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+export interface Iproduct{
+  "productId": number,
+      "productName": string,
+      "productCode": string,
+      "releaseDate": string,
+      "description": string,
+      "price": number,
+      "starRating": number,
+      "imageUrl": string
+}
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -8,7 +18,19 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   Title:String = "Product List"
-  products: any[] =[
+  imageWidth: number=50;
+  imageMargin: number =2;
+  showImage: boolean = false;
+  _listFilter: string;
+  get listFilter():string{
+    return this._listFilter;
+  }
+  set listFilter(value:string){
+    this._listFilter=value;
+    this.filteredProducts=this.listFilter? this.performFilter(this.listFilter):this.products;
+  }
+  filteredProducts:Iproduct[];
+  products: Iproduct[] =[
     {
       "productId": 2,
       "productName": "Garden Cart",
@@ -30,9 +52,20 @@ export class ProductsComponent implements OnInit {
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
     }
   ] ;
-  constructor() { }
+  constructor() {
+    this.filteredProducts=this.products;
+    this._listFilter="cart";
+   }
 
   ngOnInit() {
   }
-
+  
+  toggleImage():void {
+    this.showImage=!this.showImage;
+  }
+  performFilter(filterBy: string):Iproduct[]{
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: Iproduct)=>
+    product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1);
+  }
 }
