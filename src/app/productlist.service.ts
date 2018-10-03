@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Iproduct} from'./products/products.component';
+// tslint:disable-next-line:import-spacing
+import { Iproduct } from'./products/products.component';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,9 +11,9 @@ import { map } from 'rxjs/operators';
 export class ProductlistService {
 
   private productUrl = 'api/products/products.json';
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getProduct():Observable<Iproduct[]>{
+  getProduct(): Observable<Iproduct[]> {
   return this.http.get<Iproduct[]>('./assets/products.json').pipe(
   map(data => data || []));
   }
