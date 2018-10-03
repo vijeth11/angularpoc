@@ -8,8 +8,15 @@ import { StarComponent } from './star/star.component';
 import { ProductlistService } from './productlist.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { RouterModule,Route } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-
+const routes:Route[]=[
+  {path:'welcome',component:WelcomeComponent},
+  {path:'product',component:ProductsComponent},
+  {path:'products/:id',component:ProductdetailComponent},
+  {path:'',redirectTo:'/',pathMatch:'full'},
+  {path:'**',redirectTo:'/',pathMatch:'full'},
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +29,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     FormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [ProductlistService],
   bootstrap: [AppComponent]

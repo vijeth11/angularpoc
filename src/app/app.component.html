@@ -1,7 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:left">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <app-products></app-products>
-</div>
+<nav class='navbar navbar-expand navbar-light bg-light'>
+  <a class='navbar-brand'>{{title}}</a>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
+    <li><a class='nav-link' routerLink='/Product'>Products</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
