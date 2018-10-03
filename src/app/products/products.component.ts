@@ -38,8 +38,11 @@ export class ProductsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.products=this.ProductService.getProduct();
-    this.filteredProducts=this.products;
+    this.ProductService.getProduct().subscribe((data)=>{
+      this.products=data;
+      this.filteredProducts=this.products;
+    });
+    
   }
   
   toggleImage():void {
