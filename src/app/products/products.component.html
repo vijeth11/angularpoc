@@ -28,12 +28,12 @@
           <th>5 Star Rating</th>
         </tr>
       </thead>
-      <tbody *ngFor ="let product of filteredProducts">
+      <tbody *ngFor ="let product of filteredProducts; let i = index">
           <tr>
             <td>
               <img src={{product.imageUrl}} title={{product.productName}} style.width.px={{imageWidth}} style.margin.px={{imageMargin}} *ngIf="showImage">
             </td>
-            <td>{{product.productName}}</td>
+            <td><a routerLink='/products/{{i}}'>{{product.productName}}</a></td>
             <td>{{product.productCode| lowercase |convertToSpaces: '-'}}</td>
             <td>{{product.releaseDate}}</td>
             <td>{{product.price |currency :'USD':'symbol':'1.2-2'}}</td>
@@ -44,3 +44,4 @@
   </div>
   </div>
   </div>
+  <router-outlet ></router-outlet>

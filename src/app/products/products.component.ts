@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
 import { ProductlistService } from '../productlist.service';
 
 export interface Iproduct{

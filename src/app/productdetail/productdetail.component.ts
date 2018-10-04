@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Iproduct } from '../products/products.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { Iproduct, ProductsComponent } from '../products/products.component';
+import { ProductlistService } from '../productlist.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-productdetail',
@@ -11,9 +13,17 @@ export class ProductdetailComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   pageTitle : string = 'Product Detail';
   product:Iproduct;
-  constructor() { }
+  constructor(private productService:ProductlistService,private router : ActivatedRoute,private route: Router) {
+    let id:string = router.snapshot.paramMap.get('id');
+    this.productService.getProduct().subscribe((data)=>{
+      this.product=data[id];
+    });
+   }
 
   ngOnInit() {
   }
-
+ 
+  onBack(){
+   this.route.navigate(['/product']);
+  }
 }

@@ -10,12 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { RouterModule,Route } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductguardGuard } from './productdetail/productguard.guard';
 const routes:Route[]=[
   {path:'welcome',component:WelcomeComponent},
   {path:'product',component:ProductsComponent},
-  {path:'products/:id',component:ProductdetailComponent},
-  {path:'',redirectTo:'/',pathMatch:'full'},
-  {path:'**',redirectTo:'/',pathMatch:'full'},
+  {path:'products/:id',component:ProductdetailComponent,canActivate:[ProductguardGuard]},
+  {path:'',redirectTo:'welcome',pathMatch:'full'},
+  {path:'**',redirectTo:'welcome',pathMatch:'full'},
 ];
 @NgModule({
   declarations: [
