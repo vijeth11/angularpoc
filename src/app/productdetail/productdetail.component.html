@@ -3,6 +3,7 @@
     {{pageTitle+':'+product.productName}}
   </div>
   <div class="card-footer">
+    <img src={{product.imageUrl}} title={{product.productName}}/>
     <div>
     <div>
       <span>Name: {{product.productName}}</span>
@@ -14,16 +15,13 @@
         <span>Date: {{product.releaseDate}}</span>
     </div>
     <div>
-        <span>Price: {{product.price}}</span>
-    </div>
-    <div style="display:'inline-block'">
-        <span> Rating: <app-star [rating]='product.starRating'></app-star></span>
+        <span>Price: ${{product.price}}</span>
     </div>
     </div>
    <button class='btn btn-outline-secondary' (click)='onBack()' style='width:80px'>
   <i class = 'fs fs-chvron-left'></i> Back
   </button>
-  <button class='btn btn-outline-secondary' (click)='onBuy()' style='width:80px'>
+  <button class='btn btn-outline-secondary' (click)='onBuy()' style='margin-left:20px;width:80px'>
       <i class = 'fs fs-chvron-left'></i> Buy
   </button>
   </div>
