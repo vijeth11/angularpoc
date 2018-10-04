@@ -2,3 +2,9 @@
 2. https://docs.microsoft.com/en-us/sql/connect/python/pyodbc/step-3-proof-of-concept-connecting-to-sql-using-pyodbc?view=sql-server-2017
 3.https://docs.microsoft.com/en-us/sql/t-sql/lesson-1-creating-database-objects?view=sql-server-2017
 4.https://www.w3schools.com/sql/sql_delete.asp
+
+cmd:
+1.create database mydb
+2.use mydb
+3.create table products(productId INT,productName NVARCHAR(30),productCode NVARCHAR(15),releaseDate NVARCHAR(20),description NVARCHAR(50), price money,starRating float,imageUrl NVARCHAR(50))
+4.go
