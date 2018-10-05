@@ -13,7 +13,7 @@ export class AuthguardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if(this.productService.isAuthenticated()==false)
-    alert("Please constact admin");
+    alert("Please contact admin");
     return this.productService.isAuthenticated();
       
   }

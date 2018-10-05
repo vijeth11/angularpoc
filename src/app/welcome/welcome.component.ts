@@ -50,7 +50,7 @@ export class WelcomeComponent implements OnInit {
     localStorage.setItem('Auth','false');
     localStorage.setItem('username','');
     this.logedin=this.productService.isAuthenticated();
-    this.route.navigate(['product']);
+    this.route.navigate(['']);
   }
 
 }
