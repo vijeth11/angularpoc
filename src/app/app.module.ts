@@ -11,10 +11,11 @@ import { ProductdetailComponent } from './productdetail/productdetail.component'
 import { RouterModule,Route } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductguardGuard } from './productdetail/productguard.guard';
+import { AuthguardGuard } from './welcome/authguard.guard';
 const routes:Route[]=[
   {path:'welcome',component:WelcomeComponent},
-  {path:'product',component:ProductsComponent},
-  {path:'products/:id',component:ProductdetailComponent,canActivate:[ProductguardGuard]},
+  {path:'product',component:ProductsComponent,canActivate:[AuthguardGuard]},
+  {path:'products/:id',component:ProductdetailComponent,canActivate:[ProductguardGuard,AuthguardGuard]},
   {path:'',redirectTo:'welcome',pathMatch:'full'},
   {path:'**',redirectTo:'welcome',pathMatch:'full'},
 ];
