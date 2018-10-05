@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductlistService } from '../productlist.service';
+import { Router } from '@angular/router';
 
 export interface Iproduct{
   "productId": number,
@@ -23,6 +24,7 @@ export class ProductsComponent implements OnInit {
   imageMargin: number =2;
   showImage: boolean = false;
   _listFilter: string;
+  logedin: any;
   get listFilter():string{
     return this._listFilter;
   }
@@ -33,7 +35,8 @@ export class ProductsComponent implements OnInit {
   filteredProducts:Iproduct[];
   products: Iproduct[] =[] ;
   
-  constructor(private ProductService:ProductlistService) {
+  constructor(private ProductService:ProductlistService,private route:Router) {
+    
    }
 
   ngOnInit() {
@@ -41,7 +44,6 @@ export class ProductsComponent implements OnInit {
       this.products=data;
       this.filteredProducts=this.products;
     });
-    
   }
   
   toggleImage():void {
@@ -55,5 +57,12 @@ export class ProductsComponent implements OnInit {
 
   onNotify(data:number){
     console.log("the value"+data);
+  }
+
+  logout(){
+    localStorage.setItem('Auth','false');
+    localStorage.setItem('username','');
+    this.logedin=this.ProductService.isAuthenticated();
+    this.route.navigate(['']);
   }
 }

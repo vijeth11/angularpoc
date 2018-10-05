@@ -1,7 +1,12 @@
 <div class='card' *ngIf='product'>
-  <div class = 'card-header'>
-    {{pageTitle+':'+product.productName}}
-  </div>
+  <div >
+      <nav class='navbar navbar-expand navbar-light bg-light'>
+      <ul class='nav nav-pills'>
+      <li class='navbar-brand'>{{pageTitle+':'+product.productName}}</li>
+      <li><a class='nav-link'  (click)='logout()' >Logout</a></li>
+      </ul>
+      </nav>
+    </div>
   <div class="card-footer">
     <img src={{product.imageUrl}} title={{product.productName}}/>
     <div>

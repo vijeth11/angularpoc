@@ -17,10 +17,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.logedin=this.productService.isAuthenticated();
   }
-  logout(){
-    localStorage.setItem('Auth','false');
-    localStorage.setItem('username','');
-    this.logedin=this.productService.isAuthenticated();
-    this.route.navigate(['welcome']);
-  }
+ 
+
 }

@@ -13,6 +13,7 @@ export class ProductdetailComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   pageTitle : string = 'Product Detail';
   product:Iproduct;
+  logedin: any;
   constructor(private productService:ProductlistService,private router : ActivatedRoute,private route: Router) {
     let id:string = router.snapshot.paramMap.get('id');
     this.productService.getProduct().subscribe((data)=>{
@@ -26,4 +27,12 @@ export class ProductdetailComponent implements OnInit {
   onBack(){
    this.route.navigate(['/product']);
   }
+   
+  logout(){
+    localStorage.setItem('Auth','false');
+    localStorage.setItem('username','');
+    this.logedin=this. productService.isAuthenticated();
+    this.route.navigate(['']);
+  }
+  
 }

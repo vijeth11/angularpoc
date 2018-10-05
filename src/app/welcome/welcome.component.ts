@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { ProductsComponent } from '../products/products.component';
 import { ProductlistService } from '../productlist.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,13 @@ export class WelcomeComponent implements OnInit {
 
   pageTitle:string="Welcome";
   isAuthenticated:boolean=false;
-  constructor(private productService:ProductlistService,private route:Router) { }
+  logedin: boolean=false;
+  logg: any;
+  constructor(private productService:ProductlistService,private route:Router) { 
+    this.isAuthenticated=this.productService.isAuthenticated();
+    this.logedin=this.isAuthenticated;
+
+  }
 
   login(username,password){
   let data:any={
@@ -23,14 +29,14 @@ export class WelcomeComponent implements OnInit {
   this.productService.login(data).subscribe((response)=>{
     if(response.body.status==200){
        localStorage.setItem('Auth','true');
-       localStorage.setItem('Username',username);
+       localStorage.setItem('username',username);
        this.isAuthenticated=true
        this.route.navigate(['product']);
     }
     else{
-      alert("conatct admin");
+      alert("conatact admin");
       localStorage.setItem('Auth','false');
-      localStorage.setItem('Username','');
+      localStorage.setItem('username','');
       this.isAuthenticated=false
       this.route.navigate(['welcome']);
     }
@@ -38,6 +44,13 @@ export class WelcomeComponent implements OnInit {
   }
   ngOnInit() {
     this.isAuthenticated=this.productService.isAuthenticated();
+    this.logedin=this.isAuthenticated;
+  }
+  logout(){
+    localStorage.setItem('Auth','false');
+    localStorage.setItem('username','');
+    this.logedin=this.productService.isAuthenticated();
+    this.route.navigate(['product']);
   }
 
 }

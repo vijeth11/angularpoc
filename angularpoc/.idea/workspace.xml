@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c1995e41-136e-4b93-86a2-ae7424818405" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/productlist.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/productlist.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/products/products.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/products/products.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/welcome/welcome.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/welcome/welcome.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/welcome/welcome.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/welcome/welcome.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
