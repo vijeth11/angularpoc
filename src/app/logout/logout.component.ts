@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductlistService } from '../productlist.service';
 import { Router } from '@angular/router';
 import { WelcomeComponent } from '../welcome/welcome.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-logout',
@@ -20,7 +21,8 @@ export class LogoutComponent implements OnInit {
     localStorage.setItem('Auth','false');
     localStorage.setItem('username','');
     WelcomeComponent.isAuthenticated= this.productService.isAuthenticated();
-    this.productService.updateLoggedIn(false);
+    AppComponent.log=this.productService.isAuthenticated();
+    //this.productService.updateLoggedIn(false);
     this.route.navigateByUrl('/welcome');
   }
   

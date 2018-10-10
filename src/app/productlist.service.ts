@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // tslint:disable-next-line:import-spacing
 import { Iproduct } from'./products/products.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable,of , BehaviorSubject } from 'rxjs';
+import { Observable,of , BehaviorSubject, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,17 +11,18 @@ import { map, tap } from 'rxjs/operators';
 export class ProductlistService {
 
 private productUrl = 'http://127.0.0.1:4900/api/record';
-loggedIn = new BehaviorSubject<boolean>(false);
-    static lengths:number;
+//loggedIn = new BehaviorSubject<boolean>(false);
+// loggedIn=new Subject<boolean>();
+     static lengths:number;
 
-  updateLoggedIn(val){
-      this.loggedIn.next(val);
-  }
+  // updateLoggedIn(val){
+  //     this.loggedIn.next(val);
+  // }
 
   constructor(private http: HttpClient) {
-    this.loggedIn.subscribe(value => {
-      console.log("Subscription got", value); 
-    });
+    // this.loggedIn.subscribe(value => {
+    //   console.log("Subscription got", value); 
+    // });
    }
 
   getProduct(): Observable<Iproduct[]> {
@@ -59,4 +60,5 @@ loggedIn = new BehaviorSubject<boolean>(false);
     })
     .pipe(map(response => response || []));
   }
+  
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core
 import { ProductsComponent } from '../products/products.component';
 import { ProductlistService } from '../productlist.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-welcome',
@@ -31,22 +32,24 @@ export class WelcomeComponent implements OnInit,OnDestroy {
        localStorage.setItem('Auth','true');
        localStorage.setItem('username',username);
        WelcomeComponent.isAuthenticated=true
+       AppComponent.log=true;
        this.route.navigate(['product']);
-       this.productService.updateLoggedIn(true);
+       //this.productService.updateLoggedIn(true);
     }
     else{
       alert("conatact admin");
       localStorage.setItem('Auth','false');
       localStorage.setItem('username','');
       WelcomeComponent.isAuthenticated=false
+      AppComponent.log=false;
       this.route.navigate(['welcome']);
-      this.productService.updateLoggedIn(false);
+      //this.productService.updateLoggedIn(false);
     }
   })
   }
   ngOnInit() {
     WelcomeComponent.isAuthenticated=this.productService.isAuthenticated();
-    this.productService.updateLoggedIn(this.productService.isAuthenticated());
+    //this.productService.updateLoggedIn(this.productService.isAuthenticated());
   }
   
 

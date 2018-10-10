@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1995e41-136e-4b93-86a2-ae7424818405" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/productdetail/productdetail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/productdetail/productdetail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/productdetail/productdetail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/productdetail/productdetail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/products/products.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/products/products.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/products/products.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/welcome/welcome.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/welcome/welcome.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/welcome/welcome.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/welcome/welcome.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/productlist.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/productlist.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +176,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="85" y="65" width="1281" height="662" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
