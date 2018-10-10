@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { ProductsComponent } from '../products/products.component';
 import { ProductlistService } from '../productlist.service';
 import { Router } from '@angular/router';
@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent implements OnInit,OnDestroy {
+  
+  ngOnDestroy(): void {
+   console.log("destroyed successfully");
+  }
 
   pageTitle:string="Welcome";
-  isAuthenticated:boolean=false;
-  logedin: boolean=false;
+  static isAuthenticated:boolean=false;
   logg: any;
   constructor(private productService:ProductlistService,private route:Router) { 
-    this.isAuthenticated=this.productService.isAuthenticated();
-    this.logedin=this.isAuthenticated;
-
   }
 
   login(username,password){
@@ -30,27 +30,24 @@ export class WelcomeComponent implements OnInit {
     if(response.body.status==200){
        localStorage.setItem('Auth','true');
        localStorage.setItem('username',username);
-       this.isAuthenticated=true
+       WelcomeComponent.isAuthenticated=true
        this.route.navigate(['product']);
+       this.productService.updateLoggedIn(true);
     }
     else{
       alert("conatact admin");
       localStorage.setItem('Auth','false');
       localStorage.setItem('username','');
-      this.isAuthenticated=false
+      WelcomeComponent.isAuthenticated=false
       this.route.navigate(['welcome']);
+      this.productService.updateLoggedIn(false);
     }
   })
   }
   ngOnInit() {
-    this.isAuthenticated=this.productService.isAuthenticated();
-    this.logedin=this.isAuthenticated;
+    WelcomeComponent.isAuthenticated=this.productService.isAuthenticated();
+    this.productService.updateLoggedIn(this.productService.isAuthenticated());
   }
-  logout(){
-    localStorage.setItem('Auth','false');
-    localStorage.setItem('username','');
-    this.logedin=this.productService.isAuthenticated();
-    this.route.navigate(['']);
-  }
+  
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductlistService } from './productlist.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+  isLoggedIn$: Observable<boolean>;
   title = 'Acme Product Management';
-  logedin:boolean=false;
   constructor(private productService:ProductlistService,private route:Router){
-    this.logedin=this.productService.isAuthenticated();
   }
   ngOnInit(): void {
-    this.logedin=this.productService.isAuthenticated();
+    this.productService.updateLoggedIn(this.productService.isAuthenticated());
+    this.isLoggedIn$ = this.productService.loggedIn;
   }
- 
+
+  
+  onNotify(data:boolean){
+  }
 
 }

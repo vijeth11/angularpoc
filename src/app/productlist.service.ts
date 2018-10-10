@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // tslint:disable-next-line:import-spacing
 import { Iproduct } from'./products/products.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,of , BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,9 +10,19 @@ import { map, tap } from 'rxjs/operators';
 })
 export class ProductlistService {
 
-  private productUrl = 'http://127.0.0.1:4900/api/record';
-  static lengths:number;
-  constructor(private http: HttpClient) { }
+private productUrl = 'http://127.0.0.1:4900/api/record';
+loggedIn = new BehaviorSubject<boolean>(false);
+    static lengths:number;
+
+  updateLoggedIn(val){
+      this.loggedIn.next(val);
+  }
+
+  constructor(private http: HttpClient) {
+    this.loggedIn.subscribe(value => {
+      console.log("Subscription got", value); 
+    });
+   }
 
   getProduct(): Observable<Iproduct[]> {
   return this.http.get<Iproduct[]>(this.productUrl).pipe(
@@ -22,10 +32,11 @@ export class ProductlistService {
     return ProductlistService.lengths
   }
   isAuthenticated():boolean{
-    if(localStorage.getItem('Auth')=='true')
+    if(localStorage.getItem('Auth')=='true'){
        return true;
-    else
+     } else{
        return false;
+     }
   }
   login(data:any):Observable<any>{
     return this.http.post('http://127.0.0.1:4900/api/login',data,
@@ -35,7 +46,8 @@ export class ProductlistService {
       }),
       observe: 'response'
     })
-    .pipe(map(response => response || []));
+    .pipe(map(response => 
+      response || []));
   }
   addProduct(data:any):Observable<any>{
     return this.http.post<any>('',data,

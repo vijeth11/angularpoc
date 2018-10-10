@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked ,Output, EventEmitter } from '@angular/core';
 import { ProductlistService } from '../productlist.service';
 import { Router } from '@angular/router';
+import { WelcomeComponent } from '../welcome/welcome.component';
 
 export interface Iproduct{
   "productId": number,
@@ -18,7 +19,7 @@ export interface Iproduct{
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
+  @Output() loggedin:EventEmitter<boolean>=new EventEmitter<boolean>();
   Title:String = "Product List"
   imageWidth: number=50;
   imageMargin: number =2;
@@ -40,10 +41,18 @@ export class ProductsComponent implements OnInit {
    }
 
   ngOnInit() {
+    WelcomeComponent.isAuthenticated=this.ProductService.isAuthenticated();
+    console.log(WelcomeComponent.isAuthenticated);
     this.ProductService.getProduct().subscribe((data)=>{
       this.products=data;
       this.filteredProducts=this.products;
     });
+  }
+  
+  change(){
+    console.log("trying in");
+
+    this.loggedin.emit(true);
   }
   
   toggleImage():void {
@@ -59,10 +68,4 @@ export class ProductsComponent implements OnInit {
     console.log("the value"+data);
   }
 
-  logout(){
-    localStorage.setItem('Auth','false');
-    localStorage.setItem('username','');
-    this.logedin=this.ProductService.isAuthenticated();
-    this.route.navigate(['']);
-  }
 }

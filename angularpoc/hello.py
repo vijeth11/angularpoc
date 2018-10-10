@@ -36,8 +36,6 @@ def login():
     if(request.method=='POST'):
         username=json.loads((request.data).decode("utf-8"))['username']
         password=json.loads((request.data).decode("utf-8"))['password']
-        print(username)
-        print(password)
         cursor.execute("select * from users where username = '"+username+"' and password = '"+password+"';");
         row=cursor.fetchall()
         if(len(row) > 0):
@@ -46,6 +44,10 @@ def login():
            return Response(json.dumps({"status":404}),mimetype='application/json')
     return Response(json.dumps({"status": 404}), mimetype='application/json')
 
-
+@app.route('/api/addProduct',methods=['POST'])
+def addproduct():
+    username = json.loads((request.data).decode("utf-8"))['username']
+    productId= json.loads((request.data).decode("utf-8"))['productId']
+    cursor.execute("")
 if __name__ == '__main__':
    app.run(port=4900)

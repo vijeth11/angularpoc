@@ -28,11 +28,5 @@ export class ProductdetailComponent implements OnInit {
    this.route.navigate(['/product']);
   }
    
-  logout(){
-    localStorage.setItem('Auth','false');
-    localStorage.setItem('username','');
-    this.logedin=this. productService.isAuthenticated();
-    this.route.navigate(['']);
-  }
   
 }

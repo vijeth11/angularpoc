@@ -12,6 +12,7 @@ import { RouterModule,Route } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductguardGuard } from './productdetail/productguard.guard';
 import { AuthguardGuard } from './welcome/authguard.guard';
+import { LogoutComponent } from './logout/logout.component';
 const routes:Route[]=[
   {path:'welcome',component:WelcomeComponent},
   {path:'product',component:ProductsComponent,canActivate:[AuthguardGuard]},
@@ -26,7 +27,8 @@ const routes:Route[]=[
     ConvertToSpacesPipe,
     StarComponent,
     ProductdetailComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    LogoutComponent
   ],
   imports: [
     FormsModule,
